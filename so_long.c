@@ -16,7 +16,9 @@ typedef struct	s_ptr {
 	void	*player;
 	int		x;
 	int		y;
-	char *path;
+	char	*path;
+	int		img_w;
+	int		img_h;
 /* 	void	*mlx_img;
 	char	*addr;
 	int		bpp;
@@ -26,21 +28,15 @@ typedef struct	s_ptr {
 
 int next_frame(t_ptr *ptr);
 int exit_game(t_ptr *ptr);
+int next_frame(t_ptr *ptr);
 /* void img_pix_put(t_img *img, int x, int y, int color); */
 
-void	ptr_init(t_ptr *ptr)
-{
-	ptr->x = 0;
-	ptr->y = 0;
-	ptr->path="./character/char_right.xpm";
-}
-
-int	create_trgb(int t, int r, int g, int b)
+/* int	create_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
-}
+} */
 
-/* void render_b(t_img *img, int color)
+/* void next_frame_b(t_img *img, int color)
 {
 	int i;
 	int j;
@@ -74,32 +70,98 @@ void img_pix_put(t_img *img, int x, int y, int color)
 	}
 } */
 
+/* void count(int i)
+{
+	while (i < 40000000)
+		i++;
+}
+
+void move1(t_ptr *ptr, int i, char *path)
+{
+	count(i);
+	ptr->path=path;
+	next_frame(ptr);
+}
+
+void move2(t_ptr *ptr, int i, char *path)
+{
+	count(i);
+	ptr->path=path;
+	next_frame(ptr);
+}
+
+void move3(t_ptr *ptr, int i, char *path)
+{
+	count(i);
+	ptr->path=path;
+	next_frame(ptr);
+}
+
+void player_d(t_ptr *ptr)
+{
+	int i;
+
+	i = 0;
+	ptr->x+=5;
+	move1(ptr, i, "./character/char_right1.xpm");
+	ptr->x+=5;
+	move2(ptr, i, "./character/char_right2.xpm");
+	ptr->x+=5;
+	move3(ptr, i, "./character/char_right.xpm");
+}
+
+void player_s(t_ptr *ptr)
+{
+	int i;
+
+	i = 0;
+	ptr->y+=5;
+	move1(ptr, i, "./character/char_down1.xpm");
+	ptr->y+=5;
+	move2(ptr, i, "./character/char_down2.xpm");
+	ptr->y+=5;
+	move3(ptr, i, "./character/char_down.xpm");
+}
+
+void player_w(t_ptr *ptr)
+{
+	int i;
+
+	i = 0;
+	ptr->y-=5;
+	move1(ptr, i, "./character/char_up1.xpm");
+	ptr->y-=5;
+	move2(ptr, i, "./character/char_up2.xpm");
+	ptr->y-=5;
+	move3(ptr, i, "./character/char_up.xpm");
+}
+
+void player_a(t_ptr *ptr)
+{
+	int i;
+
+	i = 0;
+	ptr->x-=5;
+	move1(ptr, i, "./character/char_left1.xpm");
+	ptr->x-=5;
+	move2(ptr, i, "./character/char_left2.xpm");
+	ptr->x-=5;
+	move3(ptr, i, "./character/char_left.xpm");
+}
+
 int	key_hook(int keycode, t_ptr *ptr)
 {
+	mlx_clear_window(ptr->mlx, ptr->win);
 	if (keycode == W_KEY)
-	{
-		ptr->y-=15;
-		ptr->path="./character/char_up.xpm";
-	}
+		player_w(ptr);
 	if (keycode == S_KEY)
-	{
-		ptr->y+=15;
-		ptr->path="./character/char_down.xpm";
-	}
+		player_s(ptr);
 	if (keycode == D_KEY)
-	{
-		ptr->x+=15;
-		ptr->path="./character/char_right.xpm";
-	}
+		player_d(ptr);
  	if (keycode == A_KEY)
-	{
-		ptr->x-=15;
-		ptr->path="./character/char_left.xpm";
-	}
+		player_a(ptr);
 	if (keycode == ESC)
-	{
 		exit_game(ptr);
-	}
 	if (ptr->y > 300)
 		ptr->y = 300;
 	if (ptr->y <= 0)
@@ -108,17 +170,15 @@ int	key_hook(int keycode, t_ptr *ptr)
 		ptr->x = 645;
 	if (ptr->x < 0)
 		ptr->x = 0;
-	mlx_clear_window(ptr->mlx, ptr->win);
-	next_frame(ptr);
 	return (0);
 }
 
 int exit_game(t_ptr *ptr)
 {
 	mlx_clear_window(ptr->mlx, ptr->win);
+	mlx_destroy_window(ptr->mlx, ptr->win);
 	//mlx_destroy_image(ptr->mlx, ptr->mlx_img);
 	mlx_destroy_image(ptr->mlx, ptr->player);
-	mlx_destroy_window(ptr->mlx, ptr->win);
 	mlx_destroy_display(ptr->mlx);
 	free(ptr->mlx);
 	return (0);
@@ -126,26 +186,19 @@ int exit_game(t_ptr *ptr)
 
 int next_frame(t_ptr *ptr)
 {
-	int		img_width;
-	int		img_height;
-
-	ptr->player = mlx_xpm_file_to_image(ptr->mlx, ptr->path, &img_width, &img_height);
+	ptr->player = mlx_xpm_file_to_image(ptr->mlx, ptr->path, &ptr->img_w, &ptr->img_h);
 	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->player, ptr->x, ptr->y);
 	mlx_destroy_image(ptr->mlx, ptr->player);
-	return (0);
-}
-
-
-int render(t_ptr *ptr)
-{
-	next_frame(ptr);
 	return (0);
 }
 
 void game_init(t_ptr *ptr)
 {
 	ptr->mlx = mlx_init();
-	ptr_init(ptr);
+	ptr->win = mlx_new_window(ptr->mlx, WIN_W, WIN_H, "so_long");
+	ptr->x = 0;
+	ptr->y = 0;
+	ptr->path="./character/char_right.xpm";
 }
 
 int main()
@@ -153,9 +206,24 @@ int main()
 	t_ptr ptr;
 
 	game_init(&ptr);
-	ptr.win = mlx_new_window(ptr.mlx, WIN_W, WIN_H, "so_long");
-	mlx_hook(ptr.win, 2, 1L<<0, &key_hook, &ptr);
+ 	mlx_hook(ptr.win, 2, 1L<<0, &key_hook, &ptr);
 	mlx_hook(ptr.win, 17, 1L<<17, &exit_game, &ptr);
-	mlx_loop_hook(ptr.mlx, &render, &ptr);
+	next_frame(&ptr);
 	mlx_loop(ptr.mlx);
+	exit_game(&ptr);
+} */
+
+
+int main(void)
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+
+	mlx_ptr = mlx_init();
+	win_ptr = mlx_new_window(mlx_ptr, WIN_W, WIN_H, "teste");
+	mlx_loop(mlx_ptr);
+	mlx_destroy_display(mlx_ptr);
+	mlx_destroy_window(mlx_ptr, win_ptr);
+	mlx_destroy_display(mlx_ptr);
+	free(mlx_ptr);
 }
