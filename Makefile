@@ -18,10 +18,9 @@ OBJS = $(SRC:.o=.c)
 
 all:	$(NAME)
 
-$(NAME): $(OBJS)
-		 $(MAKE) -C ./libft
-			cp libft/libft.a $(NAME)
-		  	$(CC) $(OBJS) $(CFLAGS) $(MLXFLAGS) $(OBJS) -o $(NAME)
+$(NAME):	$(OBJS)
+			$(MAKE) -C ./libft
+			$(CC) $(OBJS) $(LIBFT) $(CFLAGS) $(MLXFLAGS) $(OBJS) -o $(NAME)
 
 
 clean:

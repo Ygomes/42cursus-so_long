@@ -17,12 +17,13 @@ int next_frame(t_ptr *ptr);
 void next_frame_b(t_ptr *ptr);
 /* void img_pix_put(t_img *img, int x, int y, int color); */
 
-void **make_map(t_ptr *ptr, char *path)
+char **make_map(char *path)
 {
 	int		fd;
 	char	*tmpmap;
 	char	*tmpmap2;
 	char	*gnl;
+	char	**map;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
@@ -38,9 +39,10 @@ void **make_map(t_ptr *ptr, char *path)
 		free (gnl);
 		free (tmpmap2);
 	}
-	ptr->map = ft_split(tmpmap, '\n');
+	map = ft_split(tmpmap, '\n');
 	free (tmpmap);
 	close (fd);
+	return (map);
 }
 
 void map_draw(t_ptr *ptr)
@@ -95,6 +97,7 @@ int	key_hook(int keycode, t_ptr *ptr)
 		ptr->x = 645;
 	if (ptr->x < 0)
 		ptr->x = 0;
+	map_draw(ptr);
 	return (0);
 }
 
@@ -126,8 +129,9 @@ void game_init(t_ptr *ptr)
 	ptr->y = 0;
 	ptr->floor = mlx_xpm_file_to_image(ptr->mlx, "./character/floor.xpm", &ptr->img_w, &ptr->img_h);
 	ptr->wall = mlx_xpm_file_to_image(ptr->mlx, "./character/wall.xpm", &ptr->img_w, &ptr->img_h);
-	next_frame_b(ptr);
 	ptr->path="./character/char_right.xpm";
+	ptr->map = make_map("./maps/teste.ber");
+	map_draw(ptr);
 }
 
 int main()
