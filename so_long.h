@@ -33,6 +33,7 @@ typedef struct	s_ptr {
 	int		count_e;
 	int		count_p;
 	int		the_end;
+	int		move_count;
 }				t_ptr;
 
 static char **make_map(char *path);

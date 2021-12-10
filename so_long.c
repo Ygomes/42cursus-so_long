@@ -85,6 +85,7 @@ static int	key_hook(int keycode, t_ptr *ptr)
 			ptr->map[ptr->y + 1][ptr->x] = '0';
 			ptr->path="./character/end_game.xpm";
 			ptr->the_end = 1;
+			ptr->move_count++;
 		}
 		else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 			ptr->y+=1;
@@ -94,6 +95,7 @@ static int	key_hook(int keycode, t_ptr *ptr)
 				ptr->count_c--;
 			ptr->map[ptr->y][ptr->x] = 'P';
 			ptr->map[ptr->y+1][ptr->x] = '0';
+			ptr->move_count++;
 		}
 	}
 	if (keycode == S_KEY)
@@ -106,6 +108,7 @@ static int	key_hook(int keycode, t_ptr *ptr)
 			ptr->map[ptr->y - 1][ptr->x] = '0';
 			ptr->path="./character/end_game.xpm";
 			ptr->the_end = 1;
+			ptr->move_count++;
 		}
 		if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 			ptr->y-=1;
@@ -115,6 +118,7 @@ static int	key_hook(int keycode, t_ptr *ptr)
 				ptr->count_c--;
 			ptr->map[ptr->y][ptr->x] = 'P';
 			ptr->map[ptr->y-1][ptr->x] = '0';
+			ptr->move_count++;
 		}
 	}
 	if (keycode == D_KEY)
@@ -127,6 +131,7 @@ static int	key_hook(int keycode, t_ptr *ptr)
 			ptr->map[ptr->y][ptr->x-1] = '0';
 			ptr->path="./character/end_game.xpm";
 			ptr->the_end = 1;
+			ptr->move_count++;
 		}
 		if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 			ptr->x-=1;
@@ -134,8 +139,9 @@ static int	key_hook(int keycode, t_ptr *ptr)
 		{
 			if (ptr->map[ptr->y][ptr->x] == 'C')
 				ptr->count_c--;
-		ptr->map[ptr->y][ptr->x] = 'P';
-		ptr->map[ptr->y][ptr->x-1] = '0';
+			ptr->map[ptr->y][ptr->x] = 'P';
+			ptr->map[ptr->y][ptr->x-1] = '0';
+			ptr->move_count++;
 		}
 	}
  	if (keycode == A_KEY)
@@ -148,6 +154,7 @@ static int	key_hook(int keycode, t_ptr *ptr)
 			ptr->map[ptr->y][ptr->x+1] = '0';
 			ptr->path="./character/end_game.xpm";
 			ptr->the_end = 1;
+			ptr->move_count++;
 		}
 		if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 			ptr->x+=1;
@@ -155,17 +162,17 @@ static int	key_hook(int keycode, t_ptr *ptr)
 		{
 			if (ptr->map[ptr->y][ptr->x] == 'C')
 				ptr->count_c--;
-		ptr->map[ptr->y][ptr->x] = 'P';
-		ptr->map[ptr->y][ptr->x+1] = '0';
+			ptr->map[ptr->y][ptr->x] = 'P';
+			ptr->map[ptr->y][ptr->x+1] = '0';
+			ptr->move_count++;
 		}
 	}
-	else if (keycode == ESC)
-		exit_game(ptr);
-	else if (ptr->count_c == 0 && !ptr->the_end)
+	if (ptr->count_c == 0 && !ptr->the_end)
 	{
 		mlx_destroy_image(ptr->mlx, ptr->exit);
 		ptr->exit = mlx_xpm_file_to_image(ptr->mlx, "./character/exit_open.xpm", &ptr->img_w, &ptr->img_h);
 	}
+	printf("Moves:%d\n", ptr->move_count);
 	ptr->player = mlx_xpm_file_to_image(ptr->mlx, ptr->path, &ptr->img_w, &ptr->img_h);
 	map_draw(ptr);
 	return (0);
@@ -214,6 +221,7 @@ static void free_map(char **map)
 static  int exit_game(t_ptr *ptr)
 {
 	free_map(ptr->map);
+	mlx_destroy_image(ptr->mlx, ptr->player);
 	mlx_destroy_image(ptr->mlx, ptr->collect);
 	mlx_destroy_image(ptr->mlx, ptr->exit);
 	mlx_destroy_image(ptr->mlx, ptr->floor);
@@ -222,6 +230,15 @@ static  int exit_game(t_ptr *ptr)
 	mlx_destroy_display(ptr->mlx);
 	free(ptr->mlx);
 	exit (0);
+	return (0);
+}
+
+static int key_press(int keycode, t_ptr *ptr)
+{
+	if (!ptr->the_end)
+		key_hook(keycode, ptr);
+	if (keycode == ESC)
+		exit_game(ptr);
 	return (0);
 }
 
@@ -235,6 +252,7 @@ static void game_init(t_ptr *ptr)
 	ptr->x = 0;
 	ptr->y = 0;
 	ptr->the_end = 0;
+	ptr->move_count = 0;
 	ptr->player = mlx_xpm_file_to_image(ptr->mlx, "./character/char_right.xpm", &ptr->img_w, &ptr->img_h);
 	ptr->floor = mlx_xpm_file_to_image(ptr->mlx, "./character/floor.xpm", &ptr->img_w, &ptr->img_h);
 	ptr->wall = mlx_xpm_file_to_image(ptr->mlx, "./character/wall.xpm", &ptr->img_w, &ptr->img_h);
@@ -248,8 +266,9 @@ int main()
 	t_ptr ptr;
 
 	game_init(&ptr);
- 	mlx_hook(ptr.win, 2, 1L<<0, &key_hook, &ptr);
+ 	mlx_hook(ptr.win, 2, 1L<<0, &key_press, &ptr);
 	mlx_hook(ptr.win, 17, 1L<<17, &exit_game, &ptr);
+	mlx_expose_hook(ptr.win, map_draw, &ptr);
 	mlx_loop(ptr.mlx);
 	return (0);
 }
