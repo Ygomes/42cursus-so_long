@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:08:52 by ygomes-d          #+#    #+#             */
-/*   Updated: 2021/12/09 23:38:56 by coder            ###   ########.fr       */
+/*   Updated: 2021/12/10 01:31:33 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef struct	s_ptr {
 	char	**map;
 	int		img_w;
 	int		img_h;
-
+	int		map_w;
+	int		map_h;
 }				t_ptr;
 
 

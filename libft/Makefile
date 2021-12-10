@@ -6,7 +6,7 @@
 #    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 10:17:04 by ygomes-d          #+#    #+#              #
-#    Updated: 2021/12/09 23:18:42 by coder            ###   ########.fr        #
+#    Updated: 2021/12/10 00:50:04 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME =	libft.a
 
 CC =	clang
 
-CFLAGS =	-Wall -Werror -Wextra
+CFLAGS =	-Wall -Werror -Wextra -fPIE
 
 SRCS =	ft_atoi.c \
 		ft_bzero.c \
