@@ -90,34 +90,52 @@ int	key_hook(int keycode, t_ptr *ptr)
 	{
 		ptr->y-=1;
 		ptr->path="./character/char_up.xpm";
-
+		if (ptr->map[ptr->y][ptr->x] == '1')
+			ptr->y+=1;
+		else
+		{
+		ptr->map[ptr->y][ptr->x] = 'P';
+		ptr->map[ptr->y+1][ptr->x] = '0';
+		}
 	}
 	if (keycode == S_KEY)
 	{
 		ptr->y+=1;
-		ptr->map[ptr->y][ptr->x] = 'P';
-		ptr->map[ptr->y-1][ptr->x] = '0';
 		ptr->path="./character/char_down.xpm";
+		if (ptr->map[ptr->y][ptr->x] == '1')
+			ptr->y-=1;
+		else
+		{
+			ptr->map[ptr->y][ptr->x] = 'P';
+			ptr->map[ptr->y-1][ptr->x] = '0';
+		}
 	}
 	if (keycode == D_KEY)
 	{
 		ptr->x+=1;
 		ptr->path="./character/char_right.xpm";
+		if (ptr->map[ptr->y][ptr->x] == '1')
+			ptr->x-=1;
+		else
+		{
+		ptr->map[ptr->y][ptr->x] = 'P';
+		ptr->map[ptr->y][ptr->x-1] = '0';
+		}
 	}
  	if (keycode == A_KEY)
-	{	ptr->x-=1;
+	{
+		ptr->x-=1;
 		ptr->path="./character/char_left.xpm";
+		if (ptr->map[ptr->y][ptr->x] == '1')
+			ptr->x+=1;
+		else
+		{
+		ptr->map[ptr->y][ptr->x] = 'P';
+		ptr->map[ptr->y][ptr->x+1] = '0';
+		}
 	}
 	if (keycode == ESC)
 		exit_game(ptr);
-	if (ptr->y > 300)
-		ptr->y = 300;
-	if (ptr->y <= 0)
-		ptr->y = 0;
-	if (ptr->x > 645)
-		ptr->x = 645;
-	if (ptr->x < 0)
-		ptr->x = 0;
 	ptr->player = mlx_xpm_file_to_image(ptr->mlx, ptr->path, &ptr->img_w, &ptr->img_h);
 	map_draw(ptr);
 	return (0);
@@ -156,7 +174,7 @@ void game_init(t_ptr *ptr)
 	ptr->win = mlx_new_window(ptr->mlx, ptr->map_w, ptr->map_h, "so_long");
 	ptr->x = 0;
 	ptr->y = 0;
-	ptr->player = mlx_xpm_file_to_image(ptr->mlx, "./character/teste.xpm", &ptr->img_w, &ptr->img_h);
+	ptr->player = mlx_xpm_file_to_image(ptr->mlx, "./character/char_right.xpm", &ptr->img_w, &ptr->img_h);
 	ptr->floor = mlx_xpm_file_to_image(ptr->mlx, "./character/floor.xpm", &ptr->img_w, &ptr->img_h);
 	ptr->wall = mlx_xpm_file_to_image(ptr->mlx, "./character/wall.xpm", &ptr->img_w, &ptr->img_h);
 	map_draw(ptr);
