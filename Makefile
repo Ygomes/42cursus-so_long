@@ -1,5 +1,7 @@
 LIBFT = ./libft/libft.a
 
+LPATH = ./libft/
+
 NAME = so_long
 
 SRC = so_long.c \
@@ -20,7 +22,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJS)
 			$(MAKE) -C ./libft
-			$(CC) $(OBJS) $(LIBFT) $(CFLAGS) $(MLXFLAGS) $(OBJS) -o $(NAME)
+			$(CC) $(OBJS) -L$(LPATH) -lft $(CFLAGS) $(MLXFLAGS) $(OBJS)
 
 
 clean:
