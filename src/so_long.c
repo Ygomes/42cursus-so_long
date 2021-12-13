@@ -64,6 +64,11 @@ static int map_draw(t_ptr *ptr)
 				mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->collect, j*50, i*50);
 			else if	(ptr->map[i][j] == 'E')
 				mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->exit, j*50, i*50);
+			else
+			{
+				printf("ERROR\n%c is not a valid map element\n", ptr->map[i][j]);
+				exit_game(ptr);
+			}
 			j++;
 		}
 		i++;
@@ -178,7 +183,7 @@ static int	key_hook(int keycode, t_ptr *ptr)
 	return (0);
 }
 
-static void count_pec(t_ptr *ptr)
+static int check_elements(t_ptr *ptr)
 {
 	int	i;
 	int	j;
@@ -203,6 +208,9 @@ static void count_pec(t_ptr *ptr)
 		}
 		i++;
 	}
+	if (ptr->count_c == 0 || ptr->count_e == 0 || ptr->count_p != 1)
+		return (0);
+	return (1);
 }
 
 static void free_map(char **map)
@@ -245,8 +253,7 @@ static int key_press(int keycode, t_ptr *ptr)
 static void game_init(t_ptr *ptr)
 {
 	ptr->mlx = mlx_init();
-	ptr->map = make_map("./maps/teste.ber");
-	count_pec(ptr);
+	check_elements(ptr);
 	get_win_size(ptr);
 	ptr->win = mlx_new_window(ptr->mlx, ptr->map_w, ptr->map_h, "so_long");
 	ptr->x = 0;
@@ -261,14 +268,93 @@ static void game_init(t_ptr *ptr)
 	map_draw(ptr);
 }
 
-int main()
+static int is_ret	(t_ptr *ptr)
+{
+	int	i;
+
+	i = 1;
+	if (!ptr->map)
+		return (0);
+	while (ptr->map[i])
+	{
+		if (ft_strlen(ptr->map[0]) != ft_strlen(ptr->map[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int wall_check (t_ptr *ptr)
+{
+	int	i;
+	int	j;
+
+
+	j = 0;
+	i = 0;
+	while (ptr->map[i])
+		i++;
+	while (ptr->map[0][j] && ptr->map[i-1][j])
+	{
+		if (ptr->map[0][j] != '1' || ptr->map[i- 1][j] != '1')
+			return (0);
+		j++;
+	}
+	j = 1;
+	i = ft_strlen(ptr->map[j]);
+	while (ptr->map[j])
+	{
+		if (ptr->map[j][0] != '1' || ptr->map[j][i - 1] != '1')
+			return (0);
+		j++;
+	}
+	return (1);
+}
+
+static int map_is_valid (t_ptr *ptr)
+{
+	if (wall_check(ptr) && is_ret(ptr) && check_elements(ptr))
+		return (1);
+	else
+		return (0);
+}
+
+static int maparg_check (char *argv)
+{
+	int	i;
+
+	if (!argv)
+		return 0;
+	i = ft_strlen(argv);
+	if (argv[i - 1] == 'r' && argv[i - 2] == 'e' && argv[i - 3] == 'b' && argv[i - 4] == '.')
+		return (1);
+	else
+		return (0);
+}
+
+int main(int argc, char **argv)
 {
 	t_ptr ptr;
 
-	game_init(&ptr);
- 	mlx_hook(ptr.win, 2, 1L<<0, &key_press, &ptr);
-	mlx_hook(ptr.win, 17, 1L<<17, &exit_game, &ptr);
-	mlx_expose_hook(ptr.win, map_draw, &ptr);
-	mlx_loop(ptr.mlx);
+	if (argc == 2)
+	{
+		ptr.map = make_map(argv[1]);
+		if(maparg_check(argv[1]) && map_is_valid(&ptr))
+		{
+			game_init(&ptr);
+			mlx_hook(ptr.win, 2, 1L<<0, &key_press, &ptr);
+			mlx_hook(ptr.win, 17, 1L<<17, &exit_game, &ptr);
+			mlx_expose_hook(ptr.win, map_draw, &ptr);
+			mlx_loop(ptr.mlx);
+		}
+		else
+		{
+			if (ptr.map)
+				free_map(ptr.map);
+			printf("Error\nInvalid map\n");
+		}
+	}
+	else
+		printf("Error\nInvalid number of arguments\n");
 	return (0);
 }

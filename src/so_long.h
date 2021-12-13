@@ -4,7 +4,7 @@
 #include <mlx.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "./libft/libft.h"
+#include "../libft/libft.h"
 # include <fcntl.h>
 
 #define ESC 65307
@@ -34,15 +34,13 @@ typedef struct	s_ptr {
 	int		count_p;
 	int		the_end;
 	int		move_count;
-	int		next_frame;
-	int		count;
 }				t_ptr;
 
 static char **make_map(char *path);
 static void get_win_size(t_ptr *ptr);
 static int map_draw(t_ptr *ptr);
 static int	key_hook(int keycode, t_ptr *ptr);
-static void count_pec(t_ptr *ptr);
+static int check_elements(t_ptr *ptr);
 static void free_map(char **map);
 static int exit_game(t_ptr *ptr);
 static void game_init(t_ptr *ptr);

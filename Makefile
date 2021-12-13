@@ -6,9 +6,9 @@ NAME = so_long
 
 NAME_BONUS = so_long_bonus
 
-SRC = so_long.c \
+SRC = ./src/so_long.c \
 
-BSRC = so_long_bonus.c \
+BSRC = ./src_bonus/so_long_bonus.c \
 
 CFLAGS = -Wall -Werror -Wextra -g
 
@@ -16,9 +16,9 @@ MLXFLAGS = -lmlx -lXext -lX11
 
 CC =	gcc
 
-OBJS = $(SRC:.o=.c)
+OBJS = $(SRC:.c=.o)
 
-BOBJS = $(BSRC:.o=.c)
+BOBJS = $(BSRC:.c=.o)
 
 .c.o:
 		$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -38,11 +38,11 @@ $(NAME_BONUS):	$(BOBJS)
 
 clean:
 		$(MAKE) clean -C ./libft
-		$(RM) $(OBJS)
+		$(RM) $(OBJS) $(BOBJS)
 
 fclean:	clean
 		$(MAKE) fclean -C ./libft
-		$(RM) $(NAME)
+		$(RM) $(NAME) $(NAME_BONUS)
 
 re:	fclean all
 
