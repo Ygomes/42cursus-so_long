@@ -93,7 +93,11 @@ static int	key_hook(int keycode, t_ptr *ptr)
 			ptr->move_count++;
 		}
 		else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
+		{
+			if ( ptr->map[ptr->y][ptr->x] == 'E')
+				printf("Exit is closed\n");
 			ptr->y+=1;
+		}
 		else
 		{
 			if (ptr->map[ptr->y][ptr->x] == 'C')
@@ -116,7 +120,11 @@ static int	key_hook(int keycode, t_ptr *ptr)
 			ptr->move_count++;
 		}
 		if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
+		{
+			if (ptr->map[ptr->y][ptr->x] == 'E')
+				printf("Exit is closed\n");
 			ptr->y-=1;
+		}
 		else
 		{
 			if (ptr->map[ptr->y][ptr->x] == 'C')
@@ -139,7 +147,11 @@ static int	key_hook(int keycode, t_ptr *ptr)
 			ptr->move_count++;
 		}
 		if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
+		{
+			if (ptr->map[ptr->y][ptr->x] == 'E')
+				printf("Exit is closed\n");
 			ptr->x-=1;
+		}
 		else
 		{
 			if (ptr->map[ptr->y][ptr->x] == 'C')
@@ -162,7 +174,11 @@ static int	key_hook(int keycode, t_ptr *ptr)
 			ptr->move_count++;
 		}
 		if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
+		{
+			if (ptr->map[ptr->y][ptr->x] == 'E')
+				printf("Exit is closed\n");
 			ptr->x+=1;
+		}
 		else
 		{
 			if (ptr->map[ptr->y][ptr->x] == 'C')
