@@ -10,9 +10,9 @@ SRC = ./src/so_long.c \
 
 BSRC = ./src_bonus/so_long_bonus.c \
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
 
-MLXFLAGS = -lmlx -lXext -lX11
+MLXFLAGS = -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 CC =	gcc
 
