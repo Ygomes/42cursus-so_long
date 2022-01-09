@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:54:44 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/08 22:04:27 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/08 22:49:20 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	get_win_size(t_ptr *ptr);
 int		map_draw(t_ptr *ptr);
 void	map_draw2(t_ptr *ptr, int i, int j);
 void	game_init(t_ptr *ptr);
+void	ptr_init(t_ptr *ptr);
 void	get_win_size(t_ptr *ptr);
 int		key_hook(int keycode, t_ptr *ptr);
 int		key_press(int keycode, t_ptr *ptr);

@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:20:31 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/08 21:28:21 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/08 22:47:13 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,9 @@ int	check_elements(t_ptr *ptr)
 	int	i;
 	int	j;
 
-	ptr->count_c = 0;
-	ptr->count_p = 0;
-	ptr->count_e = 0;
-	i = -1;
+	i = 0;
 	j = 0;
-	while (ptr->map[i++])
+	while (ptr->map[i])
 	{
 		j = 0;
 		while (ptr->map[i][j])
@@ -35,6 +32,7 @@ int	check_elements(t_ptr *ptr)
 				ptr->count_e++;
 			j++;
 		}
+		i++;
 	}
 	if (ptr->count_c == 0 || ptr->count_e == 0 || ptr->count_p != 1)
 		return (0);

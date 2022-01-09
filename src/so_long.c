@@ -6,11 +6,32 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:54:32 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/08 21:54:35 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/08 22:50:15 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ptr_init(t_ptr *ptr)
+{
+	ptr->x = 0;
+	ptr->y = 0;
+	ptr->the_end = 0;
+	ptr->move_count = 0;
+	ptr->count_c = 0;
+	ptr->count_p = 0;
+	ptr->count_e = 0;
+	ptr->player = mlx_xpm_file_to_image(ptr->mlx,
+			"./imgs/char_right.xpm", &ptr->img_w, &ptr->img_h);
+	ptr->floor = mlx_xpm_file_to_image(ptr->mlx,
+			"./imgs/floor.xpm", &ptr->img_w, &ptr->img_h);
+	ptr->wall = mlx_xpm_file_to_image(ptr->mlx,
+			"./imgs/wall.xpm", &ptr->img_w, &ptr->img_h);
+	ptr->collect = mlx_xpm_file_to_image(ptr->mlx,
+			"./imgs/collect.xpm", &ptr->img_w, &ptr->img_h);
+	ptr->exit = mlx_xpm_file_to_image(ptr->mlx,
+			"./imgs/exit_closed.xpm", &ptr->img_w, &ptr->img_h);
+}
 
 int	main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:40:18 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/08 22:31:33 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/08 22:49:54 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,10 @@ void	get_win_size(t_ptr *ptr)
 void	game_init(t_ptr *ptr)
 {
 	ptr->mlx = mlx_init();
+	ptr_init(ptr);
 	check_elements(ptr);
 	get_win_size(ptr);
 	ptr->win = mlx_new_window(ptr->mlx, ptr->map_w, ptr->map_h, "so_long");
-	ptr->x = 0;
-	ptr->y = 0;
-	ptr->the_end = 0;
-	ptr->move_count = 0;
-	ptr->player = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/char_right.xpm", &ptr->img_w, &ptr->img_h);
-	ptr->floor = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/floor.xpm", &ptr->img_w, &ptr->img_h);
-	ptr->wall = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/wall.xpm", &ptr->img_w, &ptr->img_h);
-	ptr->collect = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/collect.xpm", &ptr->img_w, &ptr->img_h);
-	ptr->exit = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/exit_closed.xpm", &ptr->img_w, &ptr->img_h);
 	map_draw(ptr);
 }
 
