@@ -11,8 +11,14 @@ SRC =	./src/so_long.c \
 		./events/exit_game.c \
 		./events/keypress.c \
 		./events/validation.c \
+		./events/start_game.c \
 
-BSRC = ./src_bonus/so_long_bonus.c \
+BSRC =	./src_bonus/so_long_bonus.c \
+		./character/character_mov.c \
+		./events/exit_game.c \
+		./events/keypress.c \
+		./events/validation.c \
+		./events/start_game.c \
 
 CFLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
 

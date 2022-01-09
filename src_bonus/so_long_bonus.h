@@ -1,5 +1,5 @@
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+#define SO_LONG_BONUS_H
 
 #include "../mlx_linux/mlx.h"
 #include <stdio.h>
@@ -38,13 +38,25 @@ typedef struct	s_ptr {
 	int		count;
 }				t_ptr;
 
-static char **make_map(char *path);
-static void get_win_size(t_ptr *ptr);
-static int map_draw(t_ptr *ptr);
-static int	key_hook(int keycode, t_ptr *ptr);
-static void count_pec(t_ptr *ptr);
-static void free_map(char **map);
-static int exit_game(t_ptr *ptr);
-static void game_init(t_ptr *ptr);
+char	**make_map(char *path);
+void	get_win_size(t_ptr *ptr);
+int		map_draw(t_ptr *ptr);
+void	map_draw2(t_ptr *ptr, int i, int j);
+void	game_init(t_ptr *ptr);
+void	get_win_size(t_ptr *ptr);
+int		key_hook(int keycode, t_ptr *ptr);
+int		key_press(int keycode, t_ptr *ptr);
+int		check_elements(t_ptr *ptr);
+void	free_map(char **map);
+int		exit_game(t_ptr *ptr);
+void	move_w(t_ptr *ptr);
+void	move_d(t_ptr *ptr);
+void	move_s(t_ptr *ptr);
+void	move_a(t_ptr *ptr);
+int		maparg_check(char *argv);
+int		map_is_valid(t_ptr *ptr);
+int		wall_check(t_ptr *ptr);
+int		is_ret(t_ptr *ptr);
+int pw_animation (t_ptr *ptr);
 
 #endif
