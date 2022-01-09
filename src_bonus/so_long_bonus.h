@@ -58,5 +58,6 @@ int		map_is_valid(t_ptr *ptr);
 int		wall_check(t_ptr *ptr);
 int		is_ret(t_ptr *ptr);
 int pw_animation (t_ptr *ptr);
+void	ptr_init(t_ptr *ptr);
 
 #endif
