@@ -33,9 +33,8 @@ void	ptr_init(t_ptr *ptr)
 			"./imgs/exit_closed.xpm", &ptr->img_w, &ptr->img_h);
 }
 
-int pw_animation (t_ptr *ptr)
+int	pw_animation(t_ptr *ptr)
 {
-
 	if (ptr->count < 10000)
 	{
 		ptr->count++;
@@ -44,12 +43,15 @@ int pw_animation (t_ptr *ptr)
 	ptr->count = 0;
 	mlx_destroy_image(ptr->mlx, ptr->player);
 	if (ptr->next_frame == 0)
-		ptr->player = mlx_xpm_file_to_image(ptr->mlx, "./character/char_right.xpm", &ptr->img_w, &ptr->img_h);
+		ptr->player = mlx_xpm_file_to_image(ptr->mlx,
+				"./character/char_right.xpm", &ptr->img_w, &ptr->img_h);
 	if (ptr->next_frame == 1)
-		ptr->player = mlx_xpm_file_to_image(ptr->mlx, "./character/char_right1.xpm", &ptr->img_w, &ptr->img_h);
+		ptr->player = mlx_xpm_file_to_image(ptr->mlx,
+				"./character/char_right1.xpm", &ptr->img_w, &ptr->img_h);
 	if (ptr->next_frame == 2)
 	{
-		ptr->player = mlx_xpm_file_to_image(ptr->mlx, "./character/char_right2.xpm", &ptr->img_w, &ptr->img_h);
+		ptr->player = mlx_xpm_file_to_image(ptr->mlx,
+				"./character/char_right2.xpm", &ptr->img_w, &ptr->img_h);
 		ptr->next_frame = 0;
 	}
 	map_draw(ptr);
@@ -63,7 +65,8 @@ void	game_initb(t_ptr *ptr)
 	ptr_init(ptr);
 	check_elements(ptr);
 	get_win_size(ptr);
-	ptr->win = mlx_new_window(ptr->mlx, ptr->map_w, ptr->map_h, "so_long_bonus");
+	ptr->win = mlx_new_window(ptr->mlx, ptr->map_w,
+			ptr->map_h, "so_long_bonus");
 	map_draw(ptr);
 }
 

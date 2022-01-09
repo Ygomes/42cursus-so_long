@@ -27,13 +27,17 @@ void	move_w(t_ptr *ptr)
 	else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'E')
-			printf("Exit is closed\n");
+			printf("Chest is closed\n%i:Keys Remaining\n", ptr->count_c);
 		ptr->y += 1;
 	}
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
+		{
 			ptr->count_c--;
+			if (ptr->count_c == 0)
+				printf("Treasure chest is now open\n");
+		}
 		ptr->map[ptr->y][ptr->x] = 'P';
 		ptr->map[ptr->y + 1][ptr->x] = '0';
 		ptr->move_count++;
@@ -55,13 +59,17 @@ void	move_d(t_ptr *ptr)
 	if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'E')
-			printf("Exit is closed\n");
+			printf("Chest is closed\n%i:Keys Remaining\n", ptr->count_c);
 		ptr->x -= 1;
 	}
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
+		{
 			ptr->count_c--;
+			if (ptr->count_c == 0)
+				printf("Treasure chest is now open\n");
+		}
 		ptr->map[ptr->y][ptr->x] = 'P';
 		ptr->map[ptr->y][ptr->x - 1] = '0';
 		ptr->move_count++;
@@ -83,13 +91,17 @@ void	move_s(t_ptr *ptr)
 	if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'E')
-			printf("Exit is closed\n");
+			printf("Chest is closed\n%i:Keys Remaining\n", ptr->count_c);
 		ptr->y -= 1;
 	}
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
+		{
 			ptr->count_c--;
+			if (ptr->count_c == 0)
+				printf("Treasure chest is now open\n");
+		}
 		ptr->map[ptr->y][ptr->x] = 'P';
 		ptr->map[ptr->y - 1][ptr->x] = '0';
 		ptr->move_count++;
@@ -111,13 +123,17 @@ void	move_a(t_ptr *ptr)
 	if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'E')
-			printf("Exit is closed\n");
+			printf("Chest is closed\n%i:Keys Remaining\n", ptr->count_c);
 		ptr->x += 1;
 	}
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
+		{
 			ptr->count_c--;
+			if (ptr->count_c == 0)
+				printf("Treasure chest is now open\n");
+		}
 		ptr->map[ptr->y][ptr->x] = 'P';
 		ptr->map[ptr->y][ptr->x + 1] = '0';
 		ptr->move_count++;

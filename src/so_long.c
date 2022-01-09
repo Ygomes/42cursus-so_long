@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:54:32 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/08 22:50:15 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/09 03:31:34 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ void	ptr_init(t_ptr *ptr)
 	ptr->y = 0;
 	ptr->the_end = 0;
 	ptr->move_count = 0;
-	ptr->count_c = 0;
-	ptr->count_p = 0;
-	ptr->count_e = 0;
 	ptr->player = mlx_xpm_file_to_image(ptr->mlx,
 			"./imgs/char_right.xpm", &ptr->img_w, &ptr->img_h);
 	ptr->floor = mlx_xpm_file_to_image(ptr->mlx,

@@ -20,9 +20,9 @@ BSRC =	./src_bonus/so_long_bonus.c \
 		./events/validation.c \
 		./events/start_game.c \
 
-CFLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
+CFLAGS = -Wall -Wextra -Werror
 
-MLXFLAGS = -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+MLXFLAGS = -lmlx -lX11 -lXext
 
 CC =	gcc
 

@@ -1,19 +1,19 @@
 #ifndef SO_LONG_BONUS_H
-#define SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
-#include "../mlx_linux/mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include "../libft/libft.h"
+# include <mlx.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include "../libft/libft.h"
 # include <fcntl.h>
 
-#define ESC 65307
-#define W_KEY 119
-#define A_KEY 97
-#define S_KEY 115
-#define D_KEY 100
+# define ESC 65307
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
 
-typedef struct	s_ptr {
+typedef struct s_ptr {
 	void	*mlx;
 	void	*win;
 	void	*player;
@@ -57,7 +57,7 @@ int		maparg_check(char *argv);
 int		map_is_valid(t_ptr *ptr);
 int		wall_check(t_ptr *ptr);
 int		is_ret(t_ptr *ptr);
-int pw_animation (t_ptr *ptr);
+int		pw_animation(t_ptr *ptr);
 void	ptr_init(t_ptr *ptr);
 
 #endif
