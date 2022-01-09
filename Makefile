@@ -6,7 +6,11 @@ NAME = so_long
 
 NAME_BONUS = so_long_bonus
 
-SRC = ./src/so_long.c \
+SRC =	./src/so_long.c \
+		./character/character_mov.c \
+		./events/exit_game.c \
+		./events/keypress.c \
+		./events/validation.c \
 
 BSRC = ./src_bonus/so_long_bonus.c \
 

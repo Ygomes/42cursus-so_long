@@ -36,13 +36,22 @@ typedef struct	s_ptr {
 	int		move_count;
 }				t_ptr;
 
-static char **make_map(char *path);
-static void get_win_size(t_ptr *ptr);
-static int map_draw(t_ptr *ptr);
-static int	key_hook(int keycode, t_ptr *ptr);
-static int check_elements(t_ptr *ptr);
-static void free_map(char **map);
-static int exit_game(t_ptr *ptr);
-static void game_init(t_ptr *ptr);
+char	**make_map(char *path);
+void	get_win_size(t_ptr *ptr);
+int	map_draw(t_ptr *ptr);
+int	key_hook(int keycode, t_ptr *ptr);
+int	check_elements(t_ptr *ptr);
+void	free_map(char **map);
+int	exit_game(t_ptr *ptr);
+void	game_init(t_ptr *ptr);
+void	move_w(t_ptr *ptr);
+void	move_d(t_ptr *ptr);
+void	move_s(t_ptr *ptr);
+void	move_a(t_ptr *ptr);
+int	maparg_check(char *argv);
+int	map_is_valid(t_ptr *ptr);
+int	wall_check(t_ptr *ptr);
+int	is_ret(t_ptr *ptr);
+int	key_press(int keycode, t_ptr *ptr);
 
 #endif
