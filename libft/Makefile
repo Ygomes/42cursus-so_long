@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
+#    By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 10:17:04 by ygomes-d          #+#    #+#              #
-#    Updated: 2021/12/10 22:36:07 by coder            ###   ########.fr        #
+#    Updated: 2022/01/08 22:17:00 by ygomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	libft.a
 
-CC =	clang
+CC =	gcc
 
-CFLAGS =	-Wall -Werror -Wextra -fPIE
+CFLAGS =	-Wall -Werror -Wextra
 
 SRCS =	ft_bzero.c \
 		ft_split.c \
