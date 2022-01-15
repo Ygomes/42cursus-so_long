@@ -12,13 +12,15 @@ SRC =	./src/so_long.c \
 		./events/keypress.c \
 		./events/validation.c \
 		./events/start_game.c \
+		./events/game_init.c \
 
 BSRC =	./src_bonus/so_long_bonus.c \
-		./character/character_mov.c \
-		./events/exit_game.c \
-		./events/keypress.c \
-		./events/validation.c \
-		./events/start_game.c \
+		./character/character_mov_bonus.c \
+		./events/exit_game_bonus.c \
+		./events/keypress_bonus.c \
+		./events/validation_bonus.c \
+		./events/start_game_bonus.c \
+		./events/game_init_bonus.c \
 
 CFLAGS = -Wall -Wextra -Werror
 

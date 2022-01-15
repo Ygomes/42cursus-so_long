@@ -12,22 +12,11 @@
 
 #include "so_long.h"
 
-void	ptr_init(t_ptr *ptr)
+void	hooks(t_ptr *ptr)
 {
-	ptr->x = 0;
-	ptr->y = 0;
-	ptr->the_end = 0;
-	ptr->move_count = 0;
-	ptr->player = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/char_right.xpm", &ptr->img_w, &ptr->img_h);
-	ptr->floor = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/floor.xpm", &ptr->img_w, &ptr->img_h);
-	ptr->wall = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/wall.xpm", &ptr->img_w, &ptr->img_h);
-	ptr->collect = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/collect.xpm", &ptr->img_w, &ptr->img_h);
-	ptr->exit = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/exit_closed.xpm", &ptr->img_w, &ptr->img_h);
+	mlx_hook(ptr->win, 2, 1L << 0, key_press, ptr);
+	mlx_hook(ptr->win, 17, 1L << 17, exit_game, ptr);
+	mlx_expose_hook(ptr->win, map_draw, ptr);
 }
 
 int	main(int argc, char **argv)
@@ -40,9 +29,7 @@ int	main(int argc, char **argv)
 		if (maparg_check(argv[1]) && map_is_valid(&ptr))
 		{
 			game_init(&ptr);
-			mlx_hook(ptr.win, 2, 1L << 0, &key_press, &ptr);
-			mlx_hook(ptr.win, 17, 1L << 17, &exit_game, &ptr);
-			mlx_expose_hook(ptr.win, map_draw, &ptr);
+			hooks(&ptr);
 			mlx_loop(ptr.mlx);
 		}
 		else

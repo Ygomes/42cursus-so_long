@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_game.c                                       :+:      :+:    :+:   */
+/*   start_game_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:40:18 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/15 23:57:34 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/16 00:12:25 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/so_long.h"
+#include "../src_bonus/so_long_bonus.h"
 
 void	get_win_size(t_ptr *ptr)
 {
@@ -21,6 +21,16 @@ void	get_win_size(t_ptr *ptr)
 	while (ptr->map[i])
 		i++;
 	ptr->map_h = i * 50;
+}
+
+void	game_init(t_ptr *ptr)
+{
+	ptr->mlx = mlx_init();
+	ptr_init(ptr);
+	check_elements(ptr);
+	get_win_size(ptr);
+	ptr->win = mlx_new_window(ptr->mlx, ptr->map_w, ptr->map_h, "so_long");
+	map_draw(ptr);
 }
 
 char	**make_map(char *path)
@@ -91,6 +101,9 @@ void	map_draw2(t_ptr *ptr, int i, int j)
 	else if (ptr->map[i][j] == 'E')
 		mlx_put_image_to_window(ptr->mlx,
 			ptr->win, ptr->exit, j * 50, i * 50);
+	else if (ptr->map[i][j] == 'M')
+		mlx_put_image_to_window(ptr->mlx,
+			ptr->win, ptr->monster, j * 50, i * 50);
 	else
 	{
 		printf("ERROR\n%c is not a valid map element\n", ptr->map[i][j]);

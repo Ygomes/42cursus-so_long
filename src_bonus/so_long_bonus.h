@@ -19,9 +19,13 @@ typedef struct s_ptr {
 	void	*player;
 	void	*floor;
 	void	*wall;
+	void	*monster;
 	int		x;
 	int		y;
 	char	*path;
+	char	*monster_path;
+	char	*monster_path1;
+	char	*monster_path2;
 	char	**map;
 	int		img_w;
 	int		img_h;
@@ -42,7 +46,7 @@ char	**make_map(char *path);
 void	get_win_size(t_ptr *ptr);
 int		map_draw(t_ptr *ptr);
 void	map_draw2(t_ptr *ptr, int i, int j);
-void	game_init(t_ptr *ptr);
+void	game_init_bonus(t_ptr *ptr);
 void	get_win_size(t_ptr *ptr);
 int		key_hook(int keycode, t_ptr *ptr);
 int		key_press(int keycode, t_ptr *ptr);
@@ -57,7 +61,9 @@ int		maparg_check(char *argv);
 int		map_is_valid(t_ptr *ptr);
 int		wall_check(t_ptr *ptr);
 int		is_ret(t_ptr *ptr);
-int		pw_animation(t_ptr *ptr);
+int		monster_animation(t_ptr *ptr);
 void	ptr_init(t_ptr *ptr);
+void	ptr_path(t_ptr *ptr);
+void	hooks(t_ptr *ptr);
 
 #endif

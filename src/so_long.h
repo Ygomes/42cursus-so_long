@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:54:44 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/08 22:49:20 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/15 23:53:52 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ int		maparg_check(char *argv);
 int		map_is_valid(t_ptr *ptr);
 int		wall_check(t_ptr *ptr);
 int		is_ret(t_ptr *ptr);
+void	path_init(t_ptr *ptr);
+void	hooks(t_ptr *ptr);
 
 #endif
