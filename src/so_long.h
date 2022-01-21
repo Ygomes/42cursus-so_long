@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:54:44 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/15 23:53:52 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/16 16:45:15 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,8 @@ int		wall_check(t_ptr *ptr);
 int		is_ret(t_ptr *ptr);
 void	path_init(t_ptr *ptr);
 void	hooks(t_ptr *ptr);
+void	end_game(t_ptr *ptr);
+void	chess_open(t_ptr *ptr);
+void	change_p(t_ptr *ptr);
 
 #endif

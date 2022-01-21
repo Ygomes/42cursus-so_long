@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 20:52:22 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/15 14:19:28 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/22 00:19:22 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ void	move_w(t_ptr *ptr)
 	ptr->path = "./imgs/char_up.xpm";
 	if (ptr->map[ptr->y][ptr->x] == 'E' && ptr->count_c == 0)
 	{
-		ptr->map[ptr->y][ptr->x] = 'P';
 		ptr->map[ptr->y + 1][ptr->x] = '0';
-		ptr->path = "./imgs/end_game.xpm";
-		ptr->the_end = 1;
-		ptr->move_count++;
+		end_game(ptr);
 	}
 	else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 	{
@@ -31,21 +28,13 @@ void	move_w(t_ptr *ptr)
 		ptr->y += 1;
 	}
 	else if (ptr->map[ptr->y][ptr->x] == 'M')
-	{
-		ptr->path = "./imgs/death.xpm";
-		ptr->the_end = 1;
-	}
+		change_death(ptr);
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
-		{
-			ptr->count_c--;
-			if (ptr->count_c == 0)
-				printf("Treasure chest is now open\n");
-		}
-		ptr->map[ptr->y][ptr->x] = 'P';
+			chess_open(ptr);
+		change_p(ptr);
 		ptr->map[ptr->y + 1][ptr->x] = '0';
-		ptr->move_count++;
 	}
 }
 
@@ -55,11 +44,8 @@ void	move_d(t_ptr *ptr)
 	ptr->path = "./imgs/char_right.xpm";
 	if (ptr->map[ptr->y][ptr->x] == 'E' && ptr->count_c == 0)
 	{
-		ptr->map[ptr->y][ptr->x] = 'P';
 		ptr->map[ptr->y][ptr->x - 1] = '0';
-		ptr->path = "./imgs/end_game.xpm";
-		ptr->the_end = 1;
-		ptr->move_count++;
+		end_game(ptr);
 	}
 	else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 	{
@@ -68,21 +54,13 @@ void	move_d(t_ptr *ptr)
 		ptr->x -= 1;
 	}
 	else if (ptr->map[ptr->y][ptr->x] == 'M')
-	{
-		ptr->path = "./imgs/death.xpm";
-		ptr->the_end = 1;
-	}
+		change_death(ptr);
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
-		{
-			ptr->count_c--;
-			if (ptr->count_c == 0)
-				printf("Treasure chest is now open\n");
-		}
-		ptr->map[ptr->y][ptr->x] = 'P';
+			chess_open(ptr);
+		change_p(ptr);
 		ptr->map[ptr->y][ptr->x - 1] = '0';
-		ptr->move_count++;
 	}
 }
 
@@ -92,11 +70,8 @@ void	move_s(t_ptr *ptr)
 	ptr->path = "./imgs/char_down.xpm";
 	if (ptr->map[ptr->y][ptr->x] == 'E' && ptr->count_c == 0)
 	{
-		ptr->map[ptr->y][ptr->x] = 'P';
 		ptr->map[ptr->y - 1][ptr->x] = '0';
-		ptr->path = "./imgs/end_game.xpm";
-		ptr->the_end = 1;
-		ptr->move_count++;
+		end_game(ptr);
 	}
 	else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 	{
@@ -105,21 +80,13 @@ void	move_s(t_ptr *ptr)
 		ptr->y -= 1;
 	}
 	else if (ptr->map[ptr->y][ptr->x] == 'M')
-	{
-		ptr->path = "./imgs/death.xpm";
-		ptr->the_end = 1;
-	}
+		change_death(ptr);
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
-		{
-			ptr->count_c--;
-			if (ptr->count_c == 0)
-				printf("Treasure chest is now open\n");
-		}
-		ptr->map[ptr->y][ptr->x] = 'P';
+			chess_open(ptr);
+		change_p(ptr);
 		ptr->map[ptr->y - 1][ptr->x] = '0';
-		ptr->move_count++;
 	}
 }
 
@@ -129,11 +96,8 @@ void	move_a(t_ptr *ptr)
 	ptr->path = "./imgs/char_left.xpm";
 	if (ptr->map[ptr->y][ptr->x] == 'E' && ptr->count_c == 0)
 	{
-		ptr->map[ptr->y][ptr->x] = 'P';
 		ptr->map[ptr->y][ptr->x + 1] = '0';
-		ptr->path = "./imgs/end_game.xpm";
-		ptr->the_end = 1;
-		ptr->move_count++;
+		end_game(ptr);
 	}
 	else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
 	{
@@ -142,20 +106,12 @@ void	move_a(t_ptr *ptr)
 		ptr->x += 1;
 	}
 	else if (ptr->map[ptr->y][ptr->x] == 'M')
-	{
-		ptr->path = "./imgs/death.xpm";
-		ptr->the_end = 1;
-	}
+		change_death(ptr);
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
-		{
-			ptr->count_c--;
-			if (ptr->count_c == 0)
-				printf("Treasure chest is now open\n");
-		}
-		ptr->map[ptr->y][ptr->x] = 'P';
+			chess_open(ptr);
+		change_p(ptr);
 		ptr->map[ptr->y][ptr->x + 1] = '0';
-		ptr->move_count++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:40:18 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/16 00:12:25 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:29:08 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,5 @@ void	map_draw2(t_ptr *ptr, int i, int j)
 		printf("ERROR\n%c is not a valid map element\n", ptr->map[i][j]);
 		exit_game(ptr);
 	}
+	moves_bonus(ptr);
 }

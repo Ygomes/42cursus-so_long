@@ -19,9 +19,6 @@ int	check_elements(t_ptr *ptr)
 
 	i = 0;
 	j = 0;
-	ptr->count_c = 0;
-	ptr->count_p = 0;
-	ptr->count_e = 0;
 	while (ptr->map[i])
 	{
 		j = 0;

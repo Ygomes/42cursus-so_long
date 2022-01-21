@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:14:56 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/08 21:19:35 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/16 12:30:44 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	key_hook(int keycode, t_ptr *ptr)
 		move_d(ptr);
 	else if (keycode == A_KEY)
 		move_a(ptr);
-	else if (ptr->count_c == 0 && !ptr->the_end)
+	if (ptr->count_c == 0 && !ptr->the_end)
 	{
 		mlx_destroy_image(ptr->mlx, ptr->exit);
 		ptr->exit = mlx_xpm_file_to_image(ptr->mlx, "./imgs/exit_open.xpm",

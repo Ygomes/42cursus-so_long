@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/16 16:25:50 by ygomes-d          #+#    #+#             */
+/*   Updated: 2022/01/22 00:28:55 by ygomes-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
@@ -39,6 +51,7 @@ typedef struct s_ptr {
 	int		the_end;
 	int		move_count;
 	int		next_frame;
+	int		next_path;
 	int		count;
 }				t_ptr;
 
@@ -64,6 +77,12 @@ int		is_ret(t_ptr *ptr);
 int		monster_animation(t_ptr *ptr);
 void	ptr_init(t_ptr *ptr);
 void	ptr_path(t_ptr *ptr);
-void	hooks(t_ptr *ptr);
+void	hooks_bonus(t_ptr *ptr);
+void	change_monster_path(t_ptr *ptr);
+void	moves_bonus(t_ptr *ptr);
+void	change_death(t_ptr *ptr);
+void	end_game(t_ptr *ptr);
+void	change_p(t_ptr *ptr);
+void	chess_open(t_ptr *ptr);
 
 #endif

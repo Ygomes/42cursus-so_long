@@ -6,7 +6,7 @@
 #    By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 10:17:04 by ygomes-d          #+#    #+#              #
-#    Updated: 2022/01/08 22:17:00 by ygomes-d         ###   ########.fr        #
+#    Updated: 2022/01/21 23:41:09 by ygomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS =	ft_bzero.c \
 		ft_substr.c \
 		ft_strjoin.c \
 		ft_strchr.c \
+		ft_itoa.c \
 		get_next_line.c \
 
 

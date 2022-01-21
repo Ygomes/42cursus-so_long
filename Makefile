@@ -13,6 +13,7 @@ SRC =	./src/so_long.c \
 		./events/validation.c \
 		./events/start_game.c \
 		./events/game_init.c \
+		./events/img_update.c \
 
 BSRC =	./src_bonus/so_long_bonus.c \
 		./character/character_mov_bonus.c \
@@ -21,6 +22,8 @@ BSRC =	./src_bonus/so_long_bonus.c \
 		./events/validation_bonus.c \
 		./events/start_game_bonus.c \
 		./events/game_init_bonus.c \
+		./events/img_update_bonus.c \
+		./events/moves_bonus.c \
 
 CFLAGS = -Wall -Wextra -Werror
 

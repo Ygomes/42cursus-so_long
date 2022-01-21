@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:14:56 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/16 00:13:14 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:36:37 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,9 @@ int	key_hook(int keycode, t_ptr *ptr)
 
 int	key_press(int keycode, t_ptr *ptr)
 {
-	int	move;
-
-	move = ptr->move_count;
 	if (keycode == ESC)
 		exit_game(ptr);
 	else if (!ptr->the_end)
 		key_hook(keycode, ptr);
-	if (move != ptr->move_count)
-		printf("Moves:%d\n", ptr->move_count);
 	return (0);
 }

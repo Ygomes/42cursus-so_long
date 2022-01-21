@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:08:52 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/08 22:33:04 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:43:04 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
+char	*ft_itoa(int n);
 
 #endif
