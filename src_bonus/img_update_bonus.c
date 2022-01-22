@@ -10,14 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src_bonus/so_long_bonus.h"
-
-void	chess_open(t_ptr *ptr)
-{
-	ptr->count_c--;
-	if (ptr->count_c == 0)
-		printf("Treasure chest is now open\n");
-}
+#include "so_long_bonus.h"
 
 void	change_p(t_ptr *ptr)
 {
@@ -37,4 +30,10 @@ void	change_death(t_ptr *ptr)
 {
 	ptr->path = "./imgs/death.xpm";
 	ptr->the_end = 1;
+}
+
+void	draw_img(t_ptr *ptr, void *img, int x, int y)
+{
+	mlx_put_image_to_window(ptr->mlx,
+		ptr->win, img, x * 50, y * 50 + 30);
 }

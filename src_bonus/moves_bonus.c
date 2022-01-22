@@ -10,15 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src_bonus/so_long_bonus.h"
+#include "so_long_bonus.h"
 
 void	moves_bonus(t_ptr *ptr)
 {
-	char	*str;
+	char	*moves;
+	char	*keys;
 
-	str = ft_itoa(ptr->move_count);
-	//mlx_set_font(ptr->mlx, ptr->win, "sampleText16");
-	mlx_string_put(ptr->mlx, ptr->win, 15, 10, 000000, "MOVES: ");
-	mlx_string_put(ptr->mlx, ptr->win, 60, 10, 000000, str);
-	free(str);
+	moves = ft_itoa(ptr->move_count);
+	keys = ft_itoa(ptr->count_c);
+	mlx_string_put(ptr->mlx, ptr->win, 15, 20, 0x00FFFFFF, "MOVES: ");
+	mlx_string_put(ptr->mlx, ptr->win, 55, 20, 0x00FFFFFF, moves);
+	mlx_string_put(ptr->mlx, ptr->win, 130, 20, 0x00FFFFFF, "KEYS REMANING: ");
+	mlx_string_put(ptr->mlx, ptr->win, 230, 20, 0x00FFFFFF, keys);
+	if (ptr->count_c == 0)
+		mlx_string_put(ptr->mlx, ptr->win,
+			300, 20, 0x0000FF00, "CHEST IS NOW OPEN");
+	else
+		mlx_string_put(ptr->mlx, ptr->win,
+			300, 20, 0x00FF0000, "CHEST IS CLOSED");
+	free(keys);
+	free(moves);
 }

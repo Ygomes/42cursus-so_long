@@ -6,11 +6,11 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:40:18 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/21 23:29:08 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/22 14:00:11 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src_bonus/so_long_bonus.h"
+#include "so_long_bonus.h"
 
 void	get_win_size(t_ptr *ptr)
 {
@@ -20,7 +20,7 @@ void	get_win_size(t_ptr *ptr)
 	ptr->map_w = ft_strlen(ptr->map[i]) * 50;
 	while (ptr->map[i])
 		i++;
-	ptr->map_h = i * 50;
+	ptr->map_h = i * 50 + 30;
 }
 
 void	game_init(t_ptr *ptr)
@@ -83,27 +83,21 @@ int	map_draw(t_ptr *ptr)
 void	map_draw2(t_ptr *ptr, int i, int j)
 {
 	if (ptr->map[i][j] == '1')
-		mlx_put_image_to_window(ptr->mlx, ptr->win,
-			ptr->wall, j * 50, i * 50);
+		draw_img(ptr, ptr->wall, j, i);
 	else if (ptr->map[i][j] == '0')
-		mlx_put_image_to_window(ptr->mlx, ptr->win,
-			ptr->floor, j * 50, i * 50);
+		draw_img(ptr, ptr->floor, j, i);
 	else if (ptr->map[i][j] == 'P')
 	{
 		ptr->x = j;
 		ptr->y = i;
-		mlx_put_image_to_window(ptr->mlx,
-			ptr->win, ptr->player, j * 50, i * 50);
+		draw_img(ptr, ptr->player, j, i);
 	}
 	else if (ptr->map[i][j] == 'C')
-		mlx_put_image_to_window(ptr->mlx,
-			ptr->win, ptr->collect, j * 50, i * 50);
+		draw_img(ptr, ptr->collect, j, i);
 	else if (ptr->map[i][j] == 'E')
-		mlx_put_image_to_window(ptr->mlx,
-			ptr->win, ptr->exit, j * 50, i * 50);
+		draw_img(ptr, ptr->exit, j, i);
 	else if (ptr->map[i][j] == 'M')
-		mlx_put_image_to_window(ptr->mlx,
-			ptr->win, ptr->monster, j * 50, i * 50);
+		draw_img(ptr, ptr->monster, j, i);
 	else
 	{
 		printf("ERROR\n%c is not a valid map element\n", ptr->map[i][j]);

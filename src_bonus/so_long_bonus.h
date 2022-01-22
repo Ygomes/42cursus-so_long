@@ -19,11 +19,15 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 
+# define ARROW_LEFT 65361
+# define ARROW_RIGHT 65363
+# define ARROW_DOWN 65364
+# define ARROW_UP 65362
 # define ESC 65307
 # define W_KEY 119
 # define A_KEY 97
-# define S_KEY 115
 # define D_KEY 100
+# define S_KEY 115
 
 typedef struct s_ptr {
 	void	*mlx;
@@ -62,7 +66,6 @@ void	map_draw2(t_ptr *ptr, int i, int j);
 void	game_init_bonus(t_ptr *ptr);
 void	get_win_size(t_ptr *ptr);
 int		key_hook(int keycode, t_ptr *ptr);
-int		key_press(int keycode, t_ptr *ptr);
 int		check_elements(t_ptr *ptr);
 void	free_map(char **map);
 int		exit_game(t_ptr *ptr);
@@ -83,6 +86,6 @@ void	moves_bonus(t_ptr *ptr);
 void	change_death(t_ptr *ptr);
 void	end_game(t_ptr *ptr);
 void	change_p(t_ptr *ptr);
-void	chess_open(t_ptr *ptr);
+void	draw_img(t_ptr *ptr, void *img, int x, int y);
 
 #endif

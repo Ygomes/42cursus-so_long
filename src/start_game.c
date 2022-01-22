@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/so_long.h"
+#include "so_long.h"
 
 void	get_win_size(t_ptr *ptr)
 {

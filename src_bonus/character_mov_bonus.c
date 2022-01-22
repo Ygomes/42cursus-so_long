@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src_bonus/so_long_bonus.h"
+#include "so_long_bonus.h"
 
 void	move_w(t_ptr *ptr)
 {
@@ -22,17 +22,13 @@ void	move_w(t_ptr *ptr)
 		end_game(ptr);
 	}
 	else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
-	{
-		if (ptr->map[ptr->y][ptr->x] == 'E')
-			printf("Chest is closed\n%i:Keys Remaining\n", ptr->count_c);
 		ptr->y += 1;
-	}
 	else if (ptr->map[ptr->y][ptr->x] == 'M')
 		change_death(ptr);
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
-			chess_open(ptr);
+			ptr->count_c--;
 		change_p(ptr);
 		ptr->map[ptr->y + 1][ptr->x] = '0';
 	}
@@ -48,17 +44,13 @@ void	move_d(t_ptr *ptr)
 		end_game(ptr);
 	}
 	else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
-	{
-		if (ptr->map[ptr->y][ptr->x] == 'E')
-			printf("Chest is closed\n%i:Keys Remaining\n", ptr->count_c);
 		ptr->x -= 1;
-	}
 	else if (ptr->map[ptr->y][ptr->x] == 'M')
 		change_death(ptr);
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
-			chess_open(ptr);
+			ptr->count_c--;
 		change_p(ptr);
 		ptr->map[ptr->y][ptr->x - 1] = '0';
 	}
@@ -74,17 +66,13 @@ void	move_s(t_ptr *ptr)
 		end_game(ptr);
 	}
 	else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
-	{
-		if (ptr->map[ptr->y][ptr->x] == 'E')
-			printf("Chest is closed\n%i:Keys Remaining\n", ptr->count_c);
 		ptr->y -= 1;
-	}
 	else if (ptr->map[ptr->y][ptr->x] == 'M')
 		change_death(ptr);
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
-			chess_open(ptr);
+			ptr->count_c--;
 		change_p(ptr);
 		ptr->map[ptr->y - 1][ptr->x] = '0';
 	}
@@ -100,17 +88,13 @@ void	move_a(t_ptr *ptr)
 		end_game(ptr);
 	}
 	else if (ptr->map[ptr->y][ptr->x] == '1' || ptr->map[ptr->y][ptr->x] == 'E')
-	{
-		if (ptr->map[ptr->y][ptr->x] == 'E')
-			printf("Chest is closed\n%i:Keys Remaining\n", ptr->count_c);
 		ptr->x += 1;
-	}
 	else if (ptr->map[ptr->y][ptr->x] == 'M')
 		change_death(ptr);
 	else
 	{
 		if (ptr->map[ptr->y][ptr->x] == 'C')
-			chess_open(ptr);
+			ptr->count_c--;
 		change_p(ptr);
 		ptr->map[ptr->y][ptr->x + 1] = '0';
 	}

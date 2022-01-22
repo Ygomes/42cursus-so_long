@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation_bonus.c                                 :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:20:31 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/15 14:19:18 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/22 00:55:03 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src_bonus/so_long_bonus.h"
+#include "so_long.h"
 
 int	check_elements(t_ptr *ptr)
 {
@@ -18,7 +18,9 @@ int	check_elements(t_ptr *ptr)
 	int	j;
 
 	i = 0;
-	j = 0;
+	ptr->count_c = 0;
+	ptr->count_p = 0;
+	ptr->count_e = 0;
 	while (ptr->map[i])
 	{
 		j = 0;

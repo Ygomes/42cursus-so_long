@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/so_long.h"
+#include "so_long.h"
 
 void	game_init(t_ptr *ptr)
 {
@@ -36,8 +36,9 @@ void	ptr_init(t_ptr *ptr)
 
 void	path_init(t_ptr *ptr)
 {
+	ptr->path = "./imgs/char_right.xpm";
 	ptr->player = mlx_xpm_file_to_image(ptr->mlx,
-			"./imgs/char_right.xpm", &ptr->img_w, &ptr->img_h);
+			ptr->path, &ptr->img_w, &ptr->img_h);
 	ptr->floor = mlx_xpm_file_to_image(ptr->mlx,
 			"./imgs/floor.xpm", &ptr->img_w, &ptr->img_h);
 	ptr->wall = mlx_xpm_file_to_image(ptr->mlx,

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_game.c                                        :+:      :+:    :+:   */
+/*   exit_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:13:07 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/08 21:17:32 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/15 14:18:22 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/so_long.h"
+#include "so_long_bonus.h"
 
 void	free_map(char **map)
 {
@@ -28,6 +28,7 @@ void	free_map(char **map)
 int	exit_game(t_ptr *ptr)
 {
 	free_map(ptr->map);
+	mlx_destroy_image(ptr->mlx, ptr->monster);
 	mlx_destroy_image(ptr->mlx, ptr->player);
 	mlx_destroy_image(ptr->mlx, ptr->collect);
 	mlx_destroy_image(ptr->mlx, ptr->exit);

@@ -71,7 +71,7 @@ void	change_monster_path(t_ptr *ptr)
 
 void	hooks_bonus(t_ptr *ptr)
 {
-	mlx_hook(ptr->win, 2, 1L << 0, key_press, ptr);
+	mlx_hook(ptr->win, 2, 1L << 0, key_hook, ptr);
 	mlx_hook(ptr->win, 17, 1L << 17, exit_game, ptr);
 	mlx_expose_hook(ptr->win, map_draw, ptr);
 	mlx_loop_hook(ptr->mlx, monster_animation, ptr);

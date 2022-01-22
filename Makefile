@@ -7,23 +7,23 @@ NAME = so_long
 NAME_BONUS = so_long_bonus
 
 SRC =	./src/so_long.c \
-		./character/character_mov.c \
-		./events/exit_game.c \
-		./events/keypress.c \
-		./events/validation.c \
-		./events/start_game.c \
-		./events/game_init.c \
-		./events/img_update.c \
+		./src/character_mov.c \
+		./src/exit_game.c \
+		./src/keypress.c \
+		./src/validation.c \
+		./src/start_game.c \
+		./src/game_init.c \
+		./src/img_update.c \
 
 BSRC =	./src_bonus/so_long_bonus.c \
-		./character/character_mov_bonus.c \
-		./events/exit_game_bonus.c \
-		./events/keypress_bonus.c \
-		./events/validation_bonus.c \
-		./events/start_game_bonus.c \
-		./events/game_init_bonus.c \
-		./events/img_update_bonus.c \
-		./events/moves_bonus.c \
+		./src_bonus/character_mov_bonus.c \
+		./src_bonus/exit_game_bonus.c \
+		./src_bonus/keypress_bonus.c \
+		./src_bonus/validation_bonus.c \
+		./src_bonus/start_game_bonus.c \
+		./src_bonus/game_init_bonus.c \
+		./src_bonus/img_update_bonus.c \
+		./src_bonus/moves_bonus.c \
 
 CFLAGS = -Wall -Wextra -Werror
 

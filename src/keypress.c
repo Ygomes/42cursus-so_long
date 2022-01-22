@@ -16,13 +16,13 @@ int	key_hook(int keycode, t_ptr *ptr)
 {
 	mlx_destroy_image(ptr->mlx, ptr->player);
 	mlx_clear_window(ptr->mlx, ptr->win);
-	if (keycode == W_KEY)
+	if (keycode == W_KEY || keycode == ARROW_UP)
 		move_w(ptr);
-	else if (keycode == S_KEY)
+	else if (keycode == S_KEY || keycode == ARROW_DOWN)
 		move_s(ptr);
-	else if (keycode == D_KEY)
+	else if (keycode == D_KEY || keycode == ARROW_RIGHT)
 		move_d(ptr);
-	else if (keycode == A_KEY)
+	else if (keycode == A_KEY || keycode == ARROW_LEFT)
 		move_a(ptr);
 	if (ptr->count_c == 0 && !ptr->the_end)
 	{

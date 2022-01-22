@@ -19,11 +19,15 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 
+# define ARROW_LEFT 65361
+# define ARROW_RIGHT 65363
+# define ARROW_DOWN 65364
+# define ARROW_UP 65362
 # define ESC 65307
 # define W_KEY 119
 # define A_KEY 97
-# define S_KEY 115
 # define D_KEY 100
+# define S_KEY 115
 
 typedef struct s_ptr
 {

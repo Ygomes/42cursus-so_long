@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src_bonus/so_long_bonus.h"
+#include "so_long_bonus.h"
 
 void	game_init_bonus(t_ptr *ptr)
 {
@@ -34,9 +34,6 @@ void	ptr_init(t_ptr *ptr)
 	ptr->next_frame = 1;
 	ptr->next_path = 0;
 	ptr->count = 0;
-	ptr->count_c = 0;
-	ptr->count_p = 0;
-	ptr->count_e = 0;
 }
 
 void	ptr_path(t_ptr *ptr)
@@ -44,7 +41,8 @@ void	ptr_path(t_ptr *ptr)
 	ptr->monster_path = "./imgs/enemy_down.xpm";
 	ptr->monster_path1 = "./imgs/enemy_down1.xpm";
 	ptr->monster_path2 = "./imgs/enemy_down2.xpm";
-	ptr->player = mlx_xpm_file_to_image(ptr->mlx, "./imgs/char_right.xpm",
+	ptr->path = "./imgs/char_right.xpm";
+	ptr->player = mlx_xpm_file_to_image(ptr->mlx, ptr->path,
 			&ptr->img_w, &ptr->img_h);
 	ptr->floor = mlx_xpm_file_to_image(ptr->mlx, "./imgs/floor.xpm",
 			&ptr->img_w, &ptr->img_h);
