@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 16:28:42 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/16 17:13:52 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/23 21:14:29 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ void	end_game(t_ptr *ptr)
 {
 	ptr->map[ptr->y][ptr->x] = 'P';
 	ptr->path = "./imgs/end_game.xpm";
-		ptr->the_end = 1;
-		ptr->move_count++;
+	ptr->the_end = 1;
 }
