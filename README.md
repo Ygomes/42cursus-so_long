@@ -61,4 +61,4 @@ S or Arrow_down = MOVE DOWN
 A or Arrow_left = MOVE LEFT
  
  
- ![so_long](https://imgur.com/a/E8k5ef2)
+ ![so_long](https://imgur.com/vRLH8yt)
