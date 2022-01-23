@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 21:14:56 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/21 23:36:37 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/23 12:50:44 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	key_hook(int keycode, t_ptr *ptr)
 		if (ptr->count_c == 0 && !ptr->the_end)
 		{
 			mlx_destroy_image(ptr->mlx, ptr->exit);
-			ptr->exit = mlx_xpm_file_to_image(ptr->mlx, "./imgs/exit_open.xpm",
+			ptr->exit = mlx_xpm_file_to_image(ptr->mlx, "./imgs_bonus/exit_open.xpm",
 					&ptr->img_w, &ptr->img_h);
 		}
 		ptr->player = mlx_xpm_file_to_image(ptr->mlx, ptr->path,

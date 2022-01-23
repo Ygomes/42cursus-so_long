@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 20:52:22 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/22 00:19:22 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/23 12:50:20 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	move_w(t_ptr *ptr)
 {
 	ptr->y -= 1;
-	ptr->path = "./imgs/char_up.xpm";
+	ptr->path = "./imgs_bonus/char_up.xpm";
 	if (ptr->map[ptr->y][ptr->x] == 'E' && ptr->count_c == 0)
 	{
 		ptr->map[ptr->y + 1][ptr->x] = '0';
@@ -37,7 +37,7 @@ void	move_w(t_ptr *ptr)
 void	move_d(t_ptr *ptr)
 {
 	ptr->x += 1;
-	ptr->path = "./imgs/char_right.xpm";
+	ptr->path = "./imgs_bonus/char_right.xpm";
 	if (ptr->map[ptr->y][ptr->x] == 'E' && ptr->count_c == 0)
 	{
 		ptr->map[ptr->y][ptr->x - 1] = '0';
@@ -59,7 +59,7 @@ void	move_d(t_ptr *ptr)
 void	move_s(t_ptr *ptr)
 {
 	ptr->y += 1;
-	ptr->path = "./imgs/char_down.xpm";
+	ptr->path = "./imgs_bonus/char_down.xpm";
 	if (ptr->map[ptr->y][ptr->x] == 'E' && ptr->count_c == 0)
 	{
 		ptr->map[ptr->y - 1][ptr->x] = '0';
@@ -81,7 +81,7 @@ void	move_s(t_ptr *ptr)
 void	move_a(t_ptr *ptr)
 {
 	ptr->x -= 1;
-	ptr->path = "./imgs/char_left.xpm";
+	ptr->path = "./imgs_bonus/char_left.xpm";
 	if (ptr->map[ptr->y][ptr->x] == 'E' && ptr->count_c == 0)
 	{
 		ptr->map[ptr->y][ptr->x + 1] = '0';

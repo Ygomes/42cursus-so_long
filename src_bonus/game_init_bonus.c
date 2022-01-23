@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:02:57 by ygomes-d          #+#    #+#             */
-/*   Updated: 2022/01/22 00:39:12 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2022/01/23 12:50:31 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ void	ptr_init(t_ptr *ptr)
 
 void	ptr_path(t_ptr *ptr)
 {
-	ptr->monster_path = "./imgs/enemy_down.xpm";
-	ptr->monster_path1 = "./imgs/enemy_down1.xpm";
-	ptr->monster_path2 = "./imgs/enemy_down2.xpm";
-	ptr->path = "./imgs/char_right.xpm";
+	ptr->monster_path = "./imgs_bonus/enemy_down.xpm";
+	ptr->monster_path1 = "./imgs_bonus/enemy_down1.xpm";
+	ptr->monster_path2 = "./imgs_bonus/enemy_down2.xpm";
+	ptr->path = "./imgs_bonus/char_right.xpm";
 	ptr->player = mlx_xpm_file_to_image(ptr->mlx, ptr->path,
 			&ptr->img_w, &ptr->img_h);
-	ptr->floor = mlx_xpm_file_to_image(ptr->mlx, "./imgs/floor.xpm",
+	ptr->floor = mlx_xpm_file_to_image(ptr->mlx, "./imgs_bonus/floor.xpm",
 			&ptr->img_w, &ptr->img_h);
-	ptr->wall = mlx_xpm_file_to_image(ptr->mlx, "./imgs/wall.xpm",
+	ptr->wall = mlx_xpm_file_to_image(ptr->mlx, "./imgs_bonus/wall.xpm",
 			&ptr->img_w, &ptr->img_h);
-	ptr->collect = mlx_xpm_file_to_image(ptr->mlx, "./imgs/collect.xpm",
+	ptr->collect = mlx_xpm_file_to_image(ptr->mlx, "./imgs_bonus/collect.xpm",
 			&ptr->img_w, &ptr->img_h);
-	ptr->exit = mlx_xpm_file_to_image(ptr->mlx, "./imgs/exit_closed.xpm",
+	ptr->exit = mlx_xpm_file_to_image(ptr->mlx, "./imgs_bonus/exit_closed.xpm",
 			&ptr->img_w, &ptr->img_h);
 	ptr->monster = mlx_xpm_file_to_image(ptr->mlx, ptr->monster_path,
 			&ptr->img_w, &ptr->img_h);
