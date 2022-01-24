@@ -37,6 +37,8 @@ The map file need 3 elements or 4 for the bonus part.
 
 "1 = Wall
 
+"M" = Monster (bonus)
+
 and it need to be .ber
 
 # Executing the progam
